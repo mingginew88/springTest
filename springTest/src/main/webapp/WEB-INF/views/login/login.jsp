@@ -1,111 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<title>Login V3</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/WEB-INF/views/css/Login_v3/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/WEB-INF/views/css/Login_v3/css/main.css">
-<!--===============================================================================================-->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../../../favicon.ico">
+
+<title>Signin Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="/css/signin.css" rel="stylesheet">
+
 </head>
-<body>
 
-	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="post" action="/springTest/login/loginProcess">
-					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-					</span>
-
-					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
-					</span>
-					
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" id="loginId" name="loginId" placeholder="Username" required autofocus>
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-					
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" id="loginPassword" name="loginPassword" placeholder="Password" required>
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
-
-					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Remember me
-						</label>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-				</form>
-				<br>
-				<form  action="/jspTest/login/join.jsp">
-					<div class="container-login100-form-btn">
-						<button  class="login100-form-btn" type="submit">Join</button>
-					</div>
-				</form>
-				
-				<div class="text-center p-t-90">
-					<a class="txt1" href="#">
-						Forgot Password?
-					</a>
-				</div>
-				
-				<div class="text-center p-t-90">
-					<p>&copy; 2018-02 대덕인재개발원</p>
-				</div>
-				
-			</div>
+<body class="text-center">	
+	<form class="form-signin" method="post" action="/jspTest/loginServlet">		
+		<h1 class="h3 mb-3 font-weight-normal">로그인 화면</h1>
+		<input type="text" id="loginId" name="loginId" class="form-control" placeholder="아이디" required autofocus> 
+		<input type="password" id="loginPassword"  name="loginPassword" class="form-control" placeholder="비밀번호" required>
+		<div class="checkbox mb-3">
+			<label> <input type="checkbox" value="remember-me">아이디 저장	</label>
 		</div>
-	</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign	in</button>
+		
+	</form>
+	<form class="form-signin" action="/jspTest/login/join.jsp">
+		<button class="btn btn-lg btn-primary btn-block" type="submit">회원가입</button>
+		<p class="mt-5 mb-3 text-muted">&copy; 2018-02 대덕인재개발원</p>
+	</form>
 	
-
-	<div id="dropDownSelect1"></div>
 	
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/vendor/bootstrap/js/popper.js"></script>
-	<script src="/WEB-INF/views/css/Login_v3/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/vendor/daterangepicker/moment.min.js"></script>
-	<script src="/WEB-INF/views/css/Login_v3/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="/WEB-INF/views/css/Login_v3/js/main.js"></script>
-
 </body>
 </html>
