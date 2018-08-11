@@ -35,7 +35,8 @@
 	<context-param>
 		<!-- 파라미터 이름은 contextConfigLocation으로 정해져있다 -->
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:syj/config/spring/root-context.xml					
+		<param-value>classpath:syj/config/spring/root-context.xml	
+					 classpath:syj/config/spring/servlet-context.xml				
 					 classpath:syj/config/spring/datasource.xml
 					 classpath:syj/config/spring/transaction.xml
 		</param-value>
@@ -44,6 +45,23 @@
   	<listener>
   		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   	</listener>
+  	
+  	<servlet>
+  		<servlet-name>dispatcherServlet</servlet-name>
+  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  		<init-param>
+  			<param-name>contextConfigLocation</param-name>
+  			<param-value>
+  				classpath:syj/config/spring/servlet-context.xml
+  				classpath:syj/config/spring/interceptor.xml
+  			</param-value>
+  		</init-param>
+  		<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>dispatcherServlet</servlet-name>
+  		<url-pattern>/</url-pattern>
+  	</servlet-mapping>
 
   
   
