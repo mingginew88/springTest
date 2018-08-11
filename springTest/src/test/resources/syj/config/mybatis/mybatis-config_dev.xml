@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="syj/config/mybatis/db_dev.properties"/>
+
+	<typeAliases>
+		<typeAlias type="syj.login.model.MemberVo" alias="memberVo"/>
+		<typeAlias type="syj.article.model.ArticleVo" alias="articleVo"/>
+		<typeAlias type="syj.attachment.model.AttachmentVo" alias="attachmentVo"/>
+		<typeAlias type="syj.board.model.BoardVo" alias="boardVo"/>
+		<typeAlias type="syj.reply.model.ReplyVo" alias="replyVo"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="syj/config/mybatis/mapper/member.xml" />
+		<mapper resource="syj/config/mybatis/mapper/article.xml" />
+		<mapper resource="syj/config/mybatis/mapper/attachment.xml" />
+		<mapper resource="syj/config/mybatis/mapper/board.xml" />
+		<mapper resource="syj/config/mybatis/mapper/reply.xml" />
+	</mappers>
+</configuration>
