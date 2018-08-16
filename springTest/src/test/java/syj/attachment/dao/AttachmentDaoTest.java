@@ -64,7 +64,7 @@ public class AttachmentDaoTest {
 		List<AttachmentVo> attachmentList = attachmentDao.getAttachmentOfArticle(article_no);
 
 		/***Then***/
-		assertEquals(0, attachmentList.size());
+		assertEquals(1, attachmentList.size());
 	}
 
 	
@@ -78,13 +78,35 @@ public class AttachmentDaoTest {
 	@Test
 	public void deleteAttachmentTest() {
 		/***Given***/
-		int article_no = 1;
+		int attach_no = 4;
 		
 		/***When***/
-		int result = attachmentDao.deleteAttachment(article_no);
+		int result = attachmentDao.deleteAttachment(attach_no);
 
 		/***Then***/
 		assertEquals(1, result);
+	}
+	
+	
+	/**
+	* Method : getAttachment
+	* 최초작성일 : 2018. 8. 8.
+	* 작성자 : PC17
+	* 변경이력 :
+	* @param attach_no
+	* @return
+	* Method 설명 : 해당 첨부파일 조회
+	*/
+	@Test
+	public void getAttachmentTest() {
+		/***Given***/
+		int attach_no = 4;
+
+		/***When***/
+		AttachmentVo attachmentVo = attachmentDao.getAttachment(attach_no);
+		
+		/***Then***/
+		assertEquals("sally.png", attachmentVo.getAttach_upload_name());
 	}
 
 }

@@ -53,7 +53,8 @@
 												<td>
 													<c:choose>
 														<c:when test="${articleVo.mem_id == sessionId}" >
-															<form action="/attach/deleteAttach" method="get">														
+															<form action="/attach/deleteAttach" method="get">		
+																											
 																<label for="attach_name">${attachmentVo.attach_upload_name} </label>
 																<input type="hidden" name="attach_no" value="${attachmentVo.attach_no}">
 																<input type="hidden" name="article_no" value="${articleVo.article_no}">

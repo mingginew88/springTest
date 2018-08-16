@@ -109,7 +109,7 @@ public class ArticleDaoTest {
 	public void addArticle() {
 		/***Given***/
 		ArticleVo articleVo = new ArticleVo();
-		articleVo.setArticle_gno(1);
+		articleVo.setArticle_gno(2);
 		articleVo.setArticle_title("123");
 		articleVo.setArticle_writer("syjun88");
 		articleVo.setArticle_content("123123");
@@ -137,7 +137,7 @@ public class ArticleDaoTest {
 	@Test
 	public void deleteArticle() {
 		/***Given***/
-		int article_no = 2;
+		int article_no = 1;
 		
 		/***When***/
 		int result = articleDao.deleteArticle(article_no);
@@ -145,6 +145,64 @@ public class ArticleDaoTest {
 		/***Then***/
 		assertEquals(1, result);
 
+	}
+	
+	/**
+	* Method : addReArticle
+	* 최초작성일 : 2018. 8. 8.
+	* 작성자 : PC17
+	* 변경이력 :
+	* @param articleVo
+	* @return
+	* Method 설명 : 해당 게시글의 답글 작성
+	*/
+	@Test
+	public void addReArticleTest() {
+		//TODO
+		/***Given***/
+		ArticleVo articleVo = new ArticleVo();
+		articleVo.setArticle_gno(1);
+		articleVo.setArticle_pno(1);
+		articleVo.setArticle_title("123");
+		articleVo.setArticle_writer("syjun88");
+		articleVo.setArticle_content("123123");
+		articleVo.setArticle_del_confirm("N");
+		articleVo.setBoard_no(1);
+		articleVo.setMem_id("syjun88");
+
+		/***When***/
+		int articleResult = articleDao.addReArticle(articleVo);
+
+		/***Then***/
+		assertEquals(1, articleResult);
+
+	}
+	
+	
+	/**
+	* Method : addAttachFromUpdate
+	* 최초작성일 : 2018. 8. 8.
+	* 작성자 : PC17
+	* 변경이력 :
+	* @param attachmentVo
+	* @return
+	* Method 설명 : 게시글 수정을 통한 첨부파일추가 
+	*/
+	@Test
+	public void addAttachFromUpdate() {
+		//TODO
+		/***Given***/
+		AttachmentVo attachmentVo = new AttachmentVo();
+		attachmentVo.setAttach_name("sally.png");
+		attachmentVo.setAttach_path("D:\\A_TeachingMaterial\\7.JspSrpgin\\fileUpload");
+		attachmentVo.setAttach_upload_name("5098a838-a010-4efa-9de4-c2d7974f5100");
+		attachmentVo.setArticle_no(1);
+		
+		/***When***/
+		int addResult = articleDao.addAttachFromUpdate(attachmentVo);
+		
+		/***Then***/
+		assertEquals(1, addResult);
 	}
 	
 	

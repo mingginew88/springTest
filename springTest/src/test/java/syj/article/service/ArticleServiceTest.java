@@ -35,7 +35,7 @@ public class ArticleServiceTest {
 		
 		BasicDataSource datasource = new BasicDataSource();
 		datasource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
 		datasource.setUsername("springtest");
 		datasource.setPassword("java");
 		
@@ -107,7 +107,7 @@ public class ArticleServiceTest {
 	public void addArticle() {
 		/***Given***/
 		ArticleVo articleVo = new ArticleVo();
-		articleVo.setArticle_gno(1);
+		articleVo.setArticle_gno(2);
 		articleVo.setArticle_title("123");
 		articleVo.setArticle_writer("syjun88");
 		articleVo.setArticle_content("123123");
@@ -136,7 +136,7 @@ public class ArticleServiceTest {
 	@Test
 	public void deleteArticle() {
 		/***Given***/
-		int article_no = 2;
+		int article_no = 1;
 		
 		/***When***/
 		int result = articleService.deleteArticle(article_no);
@@ -187,6 +187,7 @@ public class ArticleServiceTest {
 		/***Given***/
 		ArticleVo articleVo = new ArticleVo();
 		articleVo.setArticle_gno(1);
+		articleVo.setArticle_pno(1);
 		articleVo.setArticle_title("123");
 		articleVo.setArticle_writer("syjun88");
 		articleVo.setArticle_content("123123");
@@ -217,13 +218,17 @@ public class ArticleServiceTest {
 		//TODO
 		/***Given***/
 		AttachmentVo attachmentVo = new AttachmentVo();
+		attachmentVo.setAttach_name("sally.png");
+		attachmentVo.setAttach_path("D:\\A_TeachingMaterial\\7.JspSrpgin\\fileUpload");
+		attachmentVo.setAttach_upload_name("5098a838-a010-4efa-9de4-c2d7974f5100");
+		attachmentVo.setArticle_no(1);
 
 		/***When***/
 		int addResult = articleService.addAttachFromUpdate(attachmentVo);
 		
 		/***Then***/
 		assertEquals(1, addResult);
-
 	}
+	
 
 }

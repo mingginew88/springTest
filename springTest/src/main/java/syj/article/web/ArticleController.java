@@ -8,10 +8,6 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-
-
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -33,6 +29,7 @@ import syj.util.FileUtil;
 @RequestMapping("/article")
 @Controller
 public class ArticleController {
+	
 	
 	private Logger logger = LoggerFactory.getLogger(ArticleController.class);
 	
@@ -77,33 +74,31 @@ public class ArticleController {
 	//게시글 등록
 	@RequestMapping(value="/addArticleResult", method=RequestMethod.POST)
 	public String addArticleResult(ArticleVo articleVo,
-//								   @RequestParam("uploadFile") String uploadFile,
+								   @RequestParam("uploadFile") MultipartFile[] uploadFile,
 								   FileVo files,
 								   HttpSession session){
-		
+	
 		String article_writer = (String) session.getAttribute("sessionId");
 		articleVo.setArticle_writer(article_writer);
 		articleVo.setMem_id(article_writer);
 		
 		articleService.addArticle(articleVo);
 		
-		
 		//첨부파일 등록
-		for (MultipartFile f : files.getFiles()) {
+		for (MultipartFile f : uploadFile) {
 			String contentType = f.getContentType();
 			if( contentType != null ){
 				//fileSize가 정상적인 경우에만 업로드를 수행한다
-				String attach_upload_name = f.getName();
+				String attach_upload_name = f.getOriginalFilename();
 				String attach_path = FileUtil.fileUploadPath;			
 				String attach_name = UUID.randomUUID().toString();
 				File file = new File(attach_path + File.separator + attach_name);
-				
 				try {
 					f.transferTo(file);
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
-				
+						
 				AttachmentVo attachmentVo = new AttachmentVo();
 				attachmentVo.setAttach_upload_name(attach_upload_name);
 				attachmentVo.setAttach_path(attach_path);
@@ -132,9 +127,34 @@ public class ArticleController {
 	//게시글 수정
 	@RequestMapping(value="/updateArticleResult", method=RequestMethod.POST)
 	public String updateArticleResult(ArticleVo articleVo,
+									  @RequestParam("uploadFile") MultipartFile[] uploadFile,
+									  FileVo files,
 									  @RequestParam(value="board_no") int board_no){
 		
 		articleService.updateArticle(articleVo);
+		
+		//첨부파일 등록
+		for (MultipartFile f : uploadFile) {
+			String contentType = f.getContentType();
+			if( contentType != null ){
+				//fileSize가 정상적인 경우에만 업로드를 수행한다
+				String attach_upload_name = f.getOriginalFilename();
+				String attach_path = FileUtil.fileUploadPath;			
+				String attach_name = UUID.randomUUID().toString();
+				File file = new File(attach_path + File.separator + attach_name);
+				try {
+					f.transferTo(file);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+						
+				AttachmentVo attachmentVo = new AttachmentVo();
+				attachmentVo.setAttach_upload_name(attach_upload_name);
+				attachmentVo.setAttach_path(attach_path);
+				attachmentVo.setAttach_name(attach_name);
+				articleService.addAttachment(attachmentVo);
+			}
+		}
 		return "redirect:/board/showBoardList?board_no="+board_no;
 	}
 	
@@ -172,6 +192,8 @@ public class ArticleController {
 	//답글 등록
 	@RequestMapping(value="/addArticle2Result", method=RequestMethod.POST)
 	public String addArticle2Result(ArticleVo articleVo,
+									@RequestParam("uploadFile") MultipartFile[] uploadFile,
+									FileVo files,
 									HttpSession session){
 		
 		String article_writer = (String) session.getAttribute("sessionId");
@@ -179,14 +201,36 @@ public class ArticleController {
 		articleVo.setMem_id(article_writer);
 		
 		articleService.addReArticle(articleVo);
+		
+		//첨부파일 등록
+		for (MultipartFile f : uploadFile) {
+			String contentType = f.getContentType();
+			if( contentType != null ){
+				//fileSize가 정상적인 경우에만 업로드를 수행한다
+				String attach_upload_name = f.getOriginalFilename();
+				String attach_path = FileUtil.fileUploadPath;			
+				String attach_name = UUID.randomUUID().toString();
+				File file = new File(attach_path + File.separator + attach_name);
+				try {
+					f.transferTo(file);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+						
+				AttachmentVo attachmentVo = new AttachmentVo();
+				attachmentVo.setAttach_upload_name(attach_upload_name);
+				attachmentVo.setAttach_path(attach_path);
+				attachmentVo.setAttach_name(attach_name);
+				articleService.addAttachment(attachmentVo);
+			}
+		}
 		return "redirect:/board/showBoardList?board_no="+articleVo.getBoard_no();
 	}
 	
 	
 	
 	
-	//TODO : 새글 답글 수정 에서 첨부파일 등록
-	//TODO : 첨부파일 다운로드
+	
 	
 	
 

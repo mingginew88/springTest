@@ -43,10 +43,11 @@ public class LoginController {
 		memberVo.setMem_pw(mem_pw);
 		
 		int loginResult = loginService.checkMember(memberVo);
+		model.addAttribute("loginId", loginId);
 		
 		if(loginResult == 1) {
 			model.addAttribute("sessionId", loginId);
-			return "/main/main";
+			return "main/main";
 		}
 		
 		return "login/login2";

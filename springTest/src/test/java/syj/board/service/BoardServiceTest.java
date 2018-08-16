@@ -39,7 +39,7 @@ public class BoardServiceTest {
 		
 		BasicDataSource datasource = new BasicDataSource();
 		datasource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
 		datasource.setUsername("springtest");
 		datasource.setPassword("java");
 		
@@ -67,7 +67,7 @@ public class BoardServiceTest {
 		List<BoardVo> boardList = boardService.getAllBoard();
 
 		/***Then***/
-		assertEquals(3, boardList.size());
+		assertEquals(1, boardList.size());
 
 	}
 	
@@ -133,10 +133,10 @@ public class BoardServiceTest {
 		/***When***/
 		Map<String, Object> mapResult = boardService.getAllArticle(map);
 		@SuppressWarnings("unchecked")
-		List<ArticleVo> articleList = (List<ArticleVo>) mapResult.get("pageList");
+		List<ArticleVo> articleList = (List<ArticleVo>) mapResult.get("articleList");
 		
 		/***Then***/
-		assertEquals(7, articleList.size());
+		assertEquals(1, articleList.size());
 	}
 	
 	
@@ -161,7 +161,7 @@ public class BoardServiceTest {
 		List<ArticleVo> articleList = boardService.getAllArticleList(map);
 
 		/***Then***/
-		assertEquals(7, articleList.size());
+		assertEquals(1, articleList.size());
 	}
 	
 	
@@ -181,7 +181,7 @@ public class BoardServiceTest {
 		int cnt = boardService.getArticleTotCnt(board_no);
 
 		/***Then***/
-		assertEquals(10, cnt);
+		assertEquals(1, cnt);
 	}
 	
 	
@@ -198,7 +198,7 @@ public class BoardServiceTest {
 	public void updateBoardTest(){
 		/***Given***/
 		BoardVo boardVo = new BoardVo();
-		boardVo.setBoard_no(4);
+		boardVo.setBoard_no(1);
 		boardVo.setBoard_name("장터게시판");
 		boardVo.setBoard_use_confirm("Y");
 

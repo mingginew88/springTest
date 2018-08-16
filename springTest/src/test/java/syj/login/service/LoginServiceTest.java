@@ -35,7 +35,7 @@ public class LoginServiceTest {
 		
 		BasicDataSource datasource = new BasicDataSource();
 		datasource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
 		datasource.setUsername("springtest");
 		datasource.setPassword("java");
 		
@@ -84,8 +84,8 @@ public class LoginServiceTest {
 		/***Given***/
 		MemberVo memberVo = new MemberVo();
 		String mem_id 	 = "s001";
-		String mem_name  = "3ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
-		String mem_pw 	 = "1234";
+		String mem_name  = "서영준";
+		String mem_pw 	 = "3ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
 		String mem_email ="seo@naver.com";
 		String mem_tel 	 = "010-1234-2222";
 		String mem_addr1 ="대전";

@@ -50,14 +50,16 @@
 												<input type="hidden" id="${boardVo.board_no}" name="board_no" value="${boardVo.board_no}" >
 												<input type="text" name="board_name" value="${boardVo.board_name}">
 												<select id="update_use_confirm" name="board_use_confirm">
-													<option value="${boardVo.board_use_confirm}">
-														<c:choose>
-															<c:when test="${boardVo.board_use_confirm == 'Y'}">사용</c:when>
-															<c:when test="${boardVo.board_use_confirm == 'N'}">미사용</c:when>
-														</c:choose>
-													</option>
-													<option value="Y">사용</option>
-													<option value="N" >미사용</option>
+													<c:choose>
+														<c:when test="${boardVo.board_use_confirm == 'Y'}">
+															<option value="Y" selected="selected">사용</option>
+															<option value="N">미사용</option>
+														</c:when>
+														<c:when test="${boardVo.board_use_confirm == 'N'}">
+															<option value="Y">사용</option>
+															<option value="N" selected="selected">미사용</option>
+														</c:when>
+													</c:choose>
 												</select>
 												<button id="btnUpdateBoard" class="btn btn-primary" type="submit">수정</button>												
 											</form>

@@ -36,7 +36,7 @@ public class AttachmentServiceTest {
 		
 		BasicDataSource datasource = new BasicDataSource();
 		datasource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
 		datasource.setUsername("springtest");
 		datasource.setPassword("java");
 		
@@ -64,7 +64,7 @@ public class AttachmentServiceTest {
 		List<AttachmentVo> attachmentList = attachmentService.getAttachmentOfArticle(article_no);
 
 		/***Then***/
-		assertEquals(0, attachmentList.size());
+		assertEquals(1, attachmentList.size());
 	}
 
 	
@@ -78,10 +78,10 @@ public class AttachmentServiceTest {
 	@Test
 	public void deleteAttachmentTest() {
 		/***Given***/
-		int article_no = 1;
+		int attach_no = 4;
 		
 		/***When***/
-		int result = attachmentService.deleteAttachment(article_no);
+		int result = attachmentService.deleteAttachment(attach_no);
 
 		/***Then***/
 		assertEquals(1, result);
@@ -100,7 +100,7 @@ public class AttachmentServiceTest {
 	@Test
 	public void getAttachmentTest() {
 		/***Given***/
-		int attach_no = 96;
+		int attach_no = 4;
 
 		/***When***/
 		AttachmentVo attachmentVo = attachmentService.getAttachment(attach_no);

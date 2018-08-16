@@ -6,14 +6,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileVo {
 	
-	private List<MultipartFile> files;
+	private List<MultipartFile> uploadFile;
 
 	
 	public List<MultipartFile> getFiles() {
-		return files;
+		return uploadFile;
 	}
-	public void setFiles(List<MultipartFile> files) {
-		this.files = files;
+	public void setFiles(List<MultipartFile> uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 	
 	

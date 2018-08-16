@@ -38,7 +38,7 @@ public class ReplyServiceTest {
 		
 		BasicDataSource datasource = new BasicDataSource();
 		datasource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		datasource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
 		datasource.setUsername("springtest");
 		datasource.setPassword("java");
 		
@@ -94,7 +94,7 @@ public class ReplyServiceTest {
 		List<ReplyVo> replyList = replyService.getAllReplyOfArticleNo(article_no);
 		
 		/***Then***/
-		assertEquals(2, replyList.size());
+		assertEquals(1, replyList.size());
 	}
 	
 	

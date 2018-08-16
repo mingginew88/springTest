@@ -67,7 +67,7 @@ public class BoardDaoTest {
 		List<BoardVo> boardList = boardDao.getAllBoard();
 		
 		/***Then***/
-		assertEquals(3, boardList.size());
+		assertEquals(1, boardList.size());
 
 	}
 	
@@ -158,7 +158,7 @@ public class BoardDaoTest {
 		List<ArticleVo> articleList = boardDao.getAllArticleList(map);
 
 		/***Then***/
-		assertEquals(7, articleList.size());
+		assertEquals(1, articleList.size());
 	}
 	
 	
@@ -179,7 +179,7 @@ public class BoardDaoTest {
 		int cnt = boardDao.getArticleTotCnt(board_no);
 
 		/***Then***/
-		assertEquals(10, cnt);
+		assertEquals(1, cnt);
 	}
 	
 	
@@ -196,7 +196,7 @@ public class BoardDaoTest {
 	public void updateBoardTest(){
 		/***Given***/
 		BoardVo boardVo = new BoardVo();
-		boardVo.setBoard_no(4);
+		boardVo.setBoard_no(1);
 		boardVo.setBoard_name("장터게시판");
 		boardVo.setBoard_use_confirm("Y");
 
